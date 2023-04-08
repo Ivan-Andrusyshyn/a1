@@ -1,8 +1,8 @@
 import { fetchImg } from './fetchFood';
+import { utilsImg } from './fetchFood';
 let debounce = require('lodash.debounce');
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-
 const DEBOUNCE_DELAY = 300;
 
 const divC = document.querySelector('.gallery');
@@ -10,43 +10,41 @@ const enterData = document.querySelector('input');
 const newBtn = document.querySelector('.btn_new');
 const backBtn = document.querySelector('.btn_back');
 const btnTop = document.querySelector('.btn_top');
+const radioBtn = document.querySelector('[type="checkbox"]');
 
+radioBtn.addEventListener('click', switchImgVideo);
 document.addEventListener('scroll', makeOnScroll);
 newBtn.addEventListener('click', debounce(newGallary, DEBOUNCE_DELAY));
 backBtn.addEventListener('click', debounce(oldGallary, DEBOUNCE_DELAY));
 enterData.addEventListener('input', debounce(searchOnEnter, DEBOUNCE_DELAY));
 btnTop.addEventListener('click', () => {
-  proto.btnTop = 0;
+  utilFunction.btnTop = 0;
   return;
 });
+
 let lightbox = new SimpleLightbox('.gallery a', {});
+
 const proto = new fetchImg();
+const utilFunction = new utilsImg();
 
 function newGallary() {
   heightMax();
-  if (proto.count === 13) return;
+  if (proto.page === 13) return;
   cleanHtml();
-  proto.count += 1;
-  exp();
-  proto.notice();
-}
-function makeOnScroll() {
-  proto.btnTop = newBtn.getBoundingClientRect().top;
-  btnTop.classList.add('is-hidden');
-  console.log(proto.btnTop);
-  if (newBtn.getBoundingClientRect().top < -2000) {
-    btnTop.classList.remove('is-hidden');
-  }
+  proto.makeIncrement();
+  switchChecked();
+  utilFunction.notice(proto.page);
 }
 
 function oldGallary() {
-  if (proto.count === 1) {
+  if (proto.page === 1) {
     return;
   }
   cleanHtml();
-  proto.count -= 1;
-  exp();
-  proto.notice();
+  proto.page -= 1;
+  switchChecked();
+
+  utilFunction.notice(proto.page);
 }
 
 function searchOnEnter(e) {
@@ -54,28 +52,55 @@ function searchOnEnter(e) {
   proto.value = e.target.value.trim();
   if (proto.value == '') {
     proto.value = '';
-    proto.blockBtn(backBtn, newBtn);
-
+    utilFunction.blockBtn(backBtn, newBtn);
+    return;
+  }
+  switchChecked();
+  utilFunction.remblockBtn(backBtn, newBtn);
+}
+function switchChecked() {
+  if (utilFunction.valueCheckbox === true) {
+    expVideo();
     return;
   }
   exp();
-  proto.remblockBtn(backBtn, newBtn);
 }
-
+function switchImgVideo(e) {
+  utilFunction.valueCheckbox = e.target.checked;
+  proto.page = 1;
+}
 async function exp() {
   try {
     const { data } = await proto.makeFetch();
+    console.log(data);
     if (data.hits.length < 1) {
-      proto.noticeFeil();
+      utilFunction.noticeFeil(proto.page);
       return;
     }
-    newImg(data.hits);
+    newImgAndVideo(data.hits);
   } catch (err) {
     console.log(err);
   }
 }
-function newImg(value) {
-  divC.insertAdjacentHTML('afterbegin', proto.makeMarkup(value));
+async function expVideo() {
+  try {
+    const { data } = await proto.makeFetchVideo();
+    console.log(data);
+    if (data.hits.length < 1) {
+      utilFunction.noticeFeil(proto.page);
+      return;
+    }
+    newImgAndVideo(data.hits);
+  } catch (err) {
+    console.log(err);
+  }
+}
+function newImgAndVideo(value) {
+  if (utilFunction.valueCheckbox === true) {
+    divC.insertAdjacentHTML('afterbegin', utilFunction.markupForVideo(value));
+    return;
+  }
+  divC.insertAdjacentHTML('afterbegin', utilFunction.makeMarkup(value));
   lightbox.refresh();
 }
 
@@ -89,4 +114,11 @@ function heightMax() {
     top: cardHeight * 4,
     behavior: 'smooth',
   });
+}
+function makeOnScroll() {
+  utilFunction.btnTop = newBtn.getBoundingClientRect().top;
+  btnTop.classList.add('is-hidden');
+  if (newBtn.getBoundingClientRect().top < -2000) {
+    btnTop.classList.remove('is-hidden');
+  }
 }

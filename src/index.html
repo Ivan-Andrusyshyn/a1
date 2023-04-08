@@ -6,12 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./main.css" />
+    <link rel="stylesheet" href="./switch.css" />
   </head>
   <body>
     <div class="wrapp_input">
       <input type="text" placeholder="type text" id="input-header" />
       <button type="button" disabled class="btn_new">New galery</button>
       <button type="button" disabled class="btn_back">Back galery</button>
+      <div class="checkbox_div">
+        <p class="input_p">Video</p>
+        <label class="switch">
+          <input type="checkbox" class="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </div>
     </div>
     <ul class="gallery"></ul>
     <a class="btn_top is-hidden" href="#input-header"
