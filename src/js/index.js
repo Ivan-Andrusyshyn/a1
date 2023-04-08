@@ -65,12 +65,7 @@ function switchChecked() {
   }
   exp();
 }
-function switchImgVideo(e) {
-  utilFunction.valueCheckbox = e.target.checked;
-  cleanHtml();
-  enterData.value = '';
-  proto.page = 1;
-}
+
 async function exp() {
   try {
     const { data } = await proto.makeFetch();
@@ -96,6 +91,12 @@ async function expVideo() {
   } catch (err) {
     console.log(err);
   }
+}
+function switchImgVideo(e) {
+  utilFunction.valueCheckbox = e.target.checked;
+  cleanHtml();
+  enterData.value = '';
+  proto.page = 1;
 }
 function newImgAndVideo(value) {
   if (utilFunction.valueCheckbox === true) {

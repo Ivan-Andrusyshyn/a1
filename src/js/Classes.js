@@ -29,7 +29,7 @@ export class fetchImg {
         params: {
           key: '34935251-caa237a886f8fd2167ae0727c',
           q: this.value,
-          video_type: 'animation',
+          video_type: 'all',
           orientation: 'horizontal',
           safesearch: true,
           page: this.page,
@@ -62,8 +62,10 @@ export class utilsImg {
     return value
       .map(e => {
         return `<li class="photo-card"> 
-        <video src="${e.videos.medium.url}" type="video/mp4" controls>
-          </video>
+        <video  controls>
+        <source src="${e.videos.medium.url}" type="video/mp4">
+        <source src="${e.userImageURL}" type="png"> 
+        </video>
       <div class="info">
       <p class="info-item">
         <b>Likes</b>${e.likes}
