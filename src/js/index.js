@@ -3,6 +3,7 @@ import { utilsImg } from './Classes';
 let debounce = require('lodash.debounce');
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const DEBOUNCE_DELAY = 400;
 
 const divC = document.querySelector('.gallery');
@@ -106,7 +107,6 @@ function newImgAndVideo(value) {
   divC.insertAdjacentHTML('afterbegin', utilFunction.makeMarkup(value));
   lightbox.refresh();
 }
-
 function cleanHtml() {
   divC.innerHTML = ' ';
 }

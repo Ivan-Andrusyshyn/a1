@@ -1,5 +1,5 @@
 body {
-  background-color:rgba(255, 68, 0, 0.701);
+  background-color: rgba(255, 68, 0, 0.701);
 }
 p {
   margin: 0;
@@ -83,7 +83,13 @@ video {
   height: 220px;
   width: 100%;
   cursor: pointer;
+  object-fit: cover;
 }
+img {
+  height: 220px;
+  width: 350px;
+}
+
 input {
   width: 300px;
   height: 40px;

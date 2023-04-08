@@ -62,9 +62,8 @@ export class utilsImg {
     return value
       .map(e => {
         return `<li class="photo-card"> 
-        <video  controls>
-        <source src="${e.videos.medium.url}" type="video/mp4">
-        <source src="${e.userImageURL}" type="png"> 
+        <video poster="${e.userImageURL}"  controls>
+        <source src="${e.videos.medium.url}" type="video/mp4"> 
         </video>
       <div class="info">
       <p class="info-item">
