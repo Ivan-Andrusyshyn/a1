@@ -92,8 +92,6 @@ input {
   font-size: 14px;
 }
 @media screen and (min-width: 480px) {
-  .wrapp_input {
-  }
   .btn_top {
     width: 100px;
     height: 100px;
