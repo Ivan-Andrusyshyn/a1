@@ -3,7 +3,7 @@ import { utilsImg } from './Classes';
 let debounce = require('lodash.debounce');
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-const DEBOUNCE_DELAY = 300;
+const DEBOUNCE_DELAY = 400;
 
 const divC = document.querySelector('.gallery');
 const enterData = document.querySelector('input');
