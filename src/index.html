@@ -14,9 +14,20 @@
   </head>
   <body>
     <div class="wrapp_input">
-      <input type="text" placeholder="type text" id="input-header" />
+      <div class="search-container">
+        <svg class="searcher-svg">
+          <use href="./img/sprite.svg#icon-search"></use>
+        </svg>
+        <input
+          type="text"
+          placeholder="type text"
+          id="input-header"
+          class="search-input"
+        />
+      </div>
       <button type="button" disabled class="btn_new">New galery</button>
       <button type="button" disabled class="btn_back">Back galery</button>
+
       <div class="checkbox_div">
         <p class="input_p">Video</p>
         <label class="switch">

@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(255, 68, 0, 0.701);
+  background-color: rgba(255, 0, 0, 0.666);
 }
 p {
   margin: 0;
@@ -27,9 +27,8 @@ button {
 
   bottom: 100px;
   right: 30px;
-  /* left: 50%;
-  transform: translate(-50%); */
 }
+
 .search-svg {
   fill: blanchedalmond;
   width: 40px;
@@ -89,14 +88,46 @@ img {
   height: 220px;
   width: 350px;
 }
+/* ============================================================== */
 
-input {
-  width: 300px;
-  height: 40px;
-  border-radius: 10px;
-  padding-left: 10px;
-  font-size: 14px;
+.search-container {
+  background: #fff;
+  height: 30px;
+  border-radius: 30px;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.8s;
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.3),
+    -4px -4px 6px 0 rgba(116, 125, 136, 0.2),
+    inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
+
+.search-container .search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 0;
+  font-weight: 500;
+  font-size: 16px;
+  transition: 0.3s;
+}
+.search-container:hover > .search-input {
+  width: 260px;
+}
+
+.search-container .search-btn .fas {
+  color: #5cbdbb;
+}
+.searcher-svg {
+  width: 25px;
+  height: 25px;
+  fill: #5cbdbb;
+}
+/* =========================================================== */
 @media screen and (min-width: 480px) {
   .btn_top {
     width: 100px;
@@ -105,6 +136,16 @@ input {
   .search-svg {
     width: 60px;
     height: 60px;
+  }
+
+  .search-container .search-input {
+    border-radius: 0;
+    width: 320px;
+    justify-content: left;
+  }
+
+  .search-input {
+    border-radius: 10px;
   }
 }
 .is-hidden {
