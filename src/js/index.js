@@ -1,5 +1,5 @@
-import { fetchImg } from './fetchFood';
-import { utilsImg } from './fetchFood';
+import { fetchImg } from './Classes';
+import { utilsImg } from './Classes';
 let debounce = require('lodash.debounce');
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
