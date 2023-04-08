@@ -67,6 +67,8 @@ function switchChecked() {
 }
 function switchImgVideo(e) {
   utilFunction.valueCheckbox = e.target.checked;
+  cleanHtml();
+  enterData.value = '';
   proto.page = 1;
 }
 async function exp() {
