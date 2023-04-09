@@ -88,9 +88,12 @@ export class utilsImg {
     });
   }
   noticeFeil() {
-    Notiflix.Notify.failure(`Please, enter other data`, {
-      timeout: 2000,
-    });
+    Notiflix.Notify.failure(
+      'Sorry, there are no images matching your search query. Please try again.',
+      {
+        timeout: 2000,
+      }
+    );
   }
   blockBtn(x, y) {
     x.setAttribute('disabled', 'disabled');
