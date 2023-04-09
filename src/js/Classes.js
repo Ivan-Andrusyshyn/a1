@@ -78,7 +78,7 @@ export class utilsImg {
       <p class="info-item">
         <b>Downloads</b>${e.downloads}
       </p>
-    </div></li> `;
+    </div></li>`;
       })
       .join('');
   }

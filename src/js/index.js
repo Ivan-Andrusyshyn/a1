@@ -56,6 +56,7 @@ function searchOnEnter(e) {
     utilFunction.blockBtn(backBtn, newBtn);
     return;
   }
+  proto.page = 1;
   switchChecked();
   utilFunction.remblockBtn(backBtn, newBtn);
 }

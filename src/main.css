@@ -1,5 +1,5 @@
 body {
-  background-color: rgba(255, 0, 0, 0.666);
+  background-color: rgba(255, 0, 0, 0.37);
 }
 p {
   margin: 0;
@@ -126,6 +126,13 @@ img {
   width: 25px;
   height: 25px;
   fill: #5cbdbb;
+  margin-right: 10px;
+}
+.btn_wrapp {
+  gap: 20px;
+  justify-content: center;
+  display: flex;
+  width: 70%;
 }
 /* =========================================================== */
 @media screen and (min-width: 480px) {
